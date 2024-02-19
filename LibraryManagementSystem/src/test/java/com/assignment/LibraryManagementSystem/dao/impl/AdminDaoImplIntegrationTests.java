@@ -33,6 +33,7 @@ public class AdminDaoImplIntegrationTests {
         assertThat(result.get()).isEqualTo(admin);
     }
 
+
     @Test
     public void testThatMultipleAdminCanBeCreatedAndRecalled(){
         Admin adminA = TestDataUtil.createTestAdminA();
