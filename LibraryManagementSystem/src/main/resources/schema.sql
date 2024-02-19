@@ -1,13 +1,13 @@
+DROP TABLE IF EXISTS "orders";
+DROP TABLE IF EXISTS "books";
 DROP TABLE IF EXISTS "admins";
 DROP TABLE IF EXISTS "users";
-DROP TABLE IF EXISTS "books";
-DROP TABLE IF EXISTS "orders";
 
-CREATE SEQUENCE "admins_id_seq"
-    INCREMENT BY 1
-    MINVALUE 1
-    MAXVALUE 1000000
-    START WITH 1;
+--CREATE SEQUENCE "admins_id_seq"
+--    INCREMENT BY 1
+--    MINVALUE 1
+--    MAXVALUE 1000000
+--    START WITH 1;
 
 CREATE TABLE "admins" (
     "id"  bigint DEFAULT nextval('admins_id_seq') NOT NULL,
@@ -16,11 +16,11 @@ CREATE TABLE "admins" (
     CONSTRAINT "authors_pkey" PRIMARY KEY("id")
 );
 
-CREATE SEQUENCE "users_id_seq"
-    INCREMENT BY 1
-    MINVALUE 1
-    MAXVALUE 1000000
-    START WITH 1;
+--CREATE SEQUENCE "users_id_seq"
+--    INCREMENT BY 1
+--    MINVALUE 1
+--    MAXVALUE 1000000
+--    START WITH 1;
 
 CREATE TABLE "users" (
     "id"  bigint DEFAULT nextval('users_id_seq') NOT NULL,
@@ -36,11 +36,11 @@ CREATE TABLE "books"(
     CONSTRAINT "books_pkey" PRIMARY KEY("isbn")
 );
 
-CREATE SEQUENCE "orders_id_seq"
-    INCREMENT BY 1
-    MINVALUE 1
-    MAXVALUE 1000000
-    START WITH 1;
+--CREATE SEQUENCE "orders_id_seq"
+--    INCREMENT BY 1
+--    MINVALUE 1
+--    MAXVALUE 1000000
+--    START WITH 1;
 
 CREATE TABLE "orders"(
     "id" bigint DEFAULT nextval('orders_id_seq') NOT NULL,
