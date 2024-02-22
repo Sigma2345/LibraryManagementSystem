@@ -1,9 +1,9 @@
 package com.assignment.LibraryManagementSystem.repositories;
 
 import com.assignment.LibraryManagementSystem.TestDataUtil;
-import com.assignment.LibraryManagementSystem.domain.Book;
-import com.assignment.LibraryManagementSystem.domain.Order;
-import com.assignment.LibraryManagementSystem.domain.User;
+import com.assignment.LibraryManagementSystem.domain.entities.BookEntity;
+import com.assignment.LibraryManagementSystem.domain.entities.OrderEntity;
+import com.assignment.LibraryManagementSystem.domain.entities.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,6 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,14 +20,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class OrderRepositoryIntegrationTests {
+public class OrderEntityRepositoryIntegrationTests {
 
     private UserRepository userRepo;
     private BookRepository bookRepo;
     private OrderRepository underTest;
 
     @Autowired
-    public OrderRepositoryIntegrationTests(OrderRepository underTest, UserRepository userDao, BookRepository bookDao){
+    public OrderEntityRepositoryIntegrationTests(OrderRepository underTest, UserRepository userDao, BookRepository bookDao){
         this.underTest = underTest;
         this.userRepo = userDao;
         this.bookRepo = bookDao;
@@ -38,15 +35,16 @@ public class OrderRepositoryIntegrationTests {
 
     @Test
     public void testThatOrderCreatedAndRecalled() throws ParseException {
-        Book book = TestDataUtil.createTestBookA();
-        User user = TestDataUtil.createTestUserA();
-        bookRepo.save(book);
-        userRepo.save(user);
-        Order order = TestDataUtil.createTestOrderA(book, user);
-        underTest.save(order);
-        Optional<Order> result = underTest.findById(order.getId());
+        BookEntity bookEntity = TestDataUtil.createTestBookA();
+        UserEntity userEntity = TestDataUtil.createTestUserA();
+        bookRepo.save(bookEntity);
+        userRepo.save(userEntity);
+        OrderEntity orderEntity = TestDataUtil.createTestOrderA(bookEntity, userEntity);
+        System.out.println(orderEntity);
+        underTest.save(orderEntity);
+        Optional<OrderEntity> result = underTest.findById(orderEntity.getId());
         assertThat(result).isPresent();
-        assertThat(result.get()).isEqualTo(order);
+        assertThat(result.get()).isEqualTo(orderEntity);
     }
 
 //    @Test

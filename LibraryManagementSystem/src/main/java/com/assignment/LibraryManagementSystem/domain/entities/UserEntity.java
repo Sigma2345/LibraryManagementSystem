@@ -1,4 +1,4 @@
-package com.assignment.LibraryManagementSystem.domain;
+package com.assignment.LibraryManagementSystem.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
@@ -21,4 +21,6 @@ public class User {
     private String name;
 
     private Integer age;
+
+    private String role; 
 }

@@ -1,7 +1,7 @@
 package com.assignment.LibraryManagementSystem.repositories;
 
 import com.assignment.LibraryManagementSystem.TestDataUtil;
-import com.assignment.LibraryManagementSystem.domain.User;
+import com.assignment.LibraryManagementSystem.domain.entities.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,20 +17,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class UserRepositoryIntegrationTests {
+public class UserEntityRepositoryIntegrationTests {
 
     private final UserRepository underTest;
 
     @Autowired
-    public UserRepositoryIntegrationTests(UserRepository underTest){this.underTest = underTest;}
+    public UserEntityRepositoryIntegrationTests(UserRepository underTest){this.underTest = underTest;}
 
     @Test
     public void testThatUserCreatedAndRecalled(){
-        User user = TestDataUtil.createTestUserA();
-        underTest.save(user);
-        Optional<User> result = underTest.findById(user.getId());
+        UserEntity userEntity = TestDataUtil.createTestUserA();
+        underTest.save(userEntity);
+        Optional<UserEntity> result = underTest.findById(userEntity.getId());
         assertThat(result).isPresent();
-        assertThat(result.get()).isEqualTo(user);
+        assertThat(result.get()).isEqualTo(userEntity);
     }
 
 //    @Test

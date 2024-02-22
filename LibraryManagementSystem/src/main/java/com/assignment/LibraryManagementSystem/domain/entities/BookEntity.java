@@ -1,4 +1,4 @@
-package com.assignment.LibraryManagementSystem.domain;
+package com.assignment.LibraryManagementSystem.domain.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name="books")
-public class Book {
+public class BookEntity {
 
     @Id
     private String isbn;

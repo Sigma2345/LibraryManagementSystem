@@ -1,97 +1,100 @@
 package com.assignment.LibraryManagementSystem;
 
-
-import com.assignment.LibraryManagementSystem.domain.Admin;
-import com.assignment.LibraryManagementSystem.domain.Book;
-import com.assignment.LibraryManagementSystem.domain.Order;
-import com.assignment.LibraryManagementSystem.domain.User;
-import org.springframework.boot.test.autoconfigure.json.AutoConfigureJson;
+import com.assignment.LibraryManagementSystem.domain.entities.BookEntity;
+import com.assignment.LibraryManagementSystem.domain.entities.OrderEntity;
+import com.assignment.LibraryManagementSystem.domain.entities.UserEntity;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.time.LocalDate;
 
 public final class TestDataUtil {
 
     private TestDataUtil(){}
 
-    public static Admin createTestAdminA() {
-        return Admin.builder()
+    public static UserEntity createTestAdminA() {
+        return UserEntity.builder()
                 .id(1L)
                 .name("admin1")
                 .age(20)
+                .role("Admin")
                 .build();
     }
 
-    public static Admin createTestAdminB() {
-        return Admin.builder()
+    public static UserEntity createTestAdminB() {
+        return UserEntity.builder()
                 .id(2L)
                 .name("admin2")
-                .age(20)
+                .age(50)
+                .role("Admin")
                 .build();
     }
 
-    public static Admin createTestAdminC() {
-        return Admin.builder()
+    public static UserEntity createTestAdminC() {
+        return UserEntity.builder()
                 .id(3L)
                 .name("admin3")
-                .age(20)
+                .age(60)
+                .role("Admin")
                 .build();
     }
 
-    public static Book createTestBookA() {
-        return Book.builder()
+    public static BookEntity createTestBookA() {
+        return BookEntity.builder()
                 .isbn("1234")
                 .title("Book 1")
                 .quantity(1)
                 .build();
     }
 
-    public static Book createTestBookB() {
-        return Book.builder()
+    public static BookEntity createTestBookB() {
+        return BookEntity.builder()
                 .isbn("2345")
                 .title("Book 2")
                 .quantity(1)
                 .build();
     }
 
-    public static Order createTestOrderA(Book book, User user) throws ParseException{
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-        return Order.builder()
+    public static OrderEntity createTestOrderA(BookEntity bookEntity, UserEntity userEntity) throws ParseException{
+
+
+        return OrderEntity.builder()
                 .id(1L)
-                .book(book)
-                .user(user)
-                .issue_date(formatter.parse("10-OCT-2010"))
-                .expiration_date(formatter.parse("20-OCT-2010"))
-                .return_date(formatter.parse("24-OCT-2010"))
+                .bookEntity(bookEntity)
+                .userEntity(userEntity)
+                .issue_date(java.sql.Date.valueOf(LocalDate.of(2010,10,10)))
+                .expiration_date(java.sql.Date.valueOf(LocalDate.of(2010,10,20)))
+                .return_date(java.sql.Date.valueOf(LocalDate.of(2010,10,24)))
                 .fine(10)
                 .build();
     }
 
-    public static Order createTestOrderB() throws ParseException{
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-        return Order.builder()
+    public static OrderEntity createTestOrderB(BookEntity bookEntity, UserEntity userEntity) throws ParseException{
+        return OrderEntity.builder()
                 .id(2L)
-                .issue_date(formatter.parse("20-OCT-2010"))
-                .expiration_date(formatter.parse("30-OCT-2010"))
-                .return_date(formatter.parse("31-OCT-2010"))
+                .bookEntity(bookEntity)
+                .userEntity(userEntity)
+                .issue_date(java.sql.Date.valueOf(LocalDate.of(2010,10,20)))
+                .expiration_date(java.sql.Date.valueOf(LocalDate.of(2010,10,30)))
+                .return_date(java.sql.Date.valueOf(LocalDate.of(2010,10,31)))
                 .fine(20)
                 .build();
     }
 
-    public static User createTestUserA() {
-        return User.builder()
+    public static UserEntity createTestUserA() {
+        return UserEntity.builder()
                 .id(1L)
                 .name("user1")
                 .age(20)
+                .role("User")
                 .build();
     }
 
-    public static User createTestUserB() {
-        return User.builder()
+    public static UserEntity createTestUserB() {
+        return UserEntity.builder()
                 .id(2L)
                 .name("user2")
                 .age(20)
+                .role("User")
                 .build();
     }
 }

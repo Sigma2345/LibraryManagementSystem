@@ -1,9 +1,7 @@
-package com.assignment.LibraryManagementSystem.domain;
+package com.assignment.LibraryManagementSystem.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -11,7 +9,7 @@ import java.util.Date;
 @Builder
 @Entity
 @Table(name = "orders")
-public class Order {
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_seq")
@@ -19,17 +17,17 @@ public class Order {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_isbn", referencedColumnName = "isbn" )
-    private Book book;
+    private BookEntity bookEntity;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private UserEntity userEntity;
 
-    private Date issue_date;
+    private java.sql.Date issue_date;
 
-    private Date expiration_date;
+    private java.sql.Date expiration_date;
 
-    private Date return_date;
+    private java.sql.Date return_date;
 
     private Integer fine;
 }
