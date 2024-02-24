@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('https://img.freepik.com/free-photo/branch-pattern-sparkle-effect_53876-94839.jpg?w=1060&t=st=1708516452~exp=1708517052~hmac=e08c0d518641710048df5be1606001ba05678afe9aa18b0ed24b2a8230db3647'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    font-family: Arial, sans-serif; 
+}
