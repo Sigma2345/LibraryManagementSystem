@@ -1,5 +1,6 @@
 package com.assignment.LibraryManagementSystem;
 
+import com.assignment.LibraryManagementSystem.domain.dto.BookDto;
 import com.assignment.LibraryManagementSystem.domain.entities.BookEntity;
 import com.assignment.LibraryManagementSystem.domain.entities.OrderEntity;
 import com.assignment.LibraryManagementSystem.domain.entities.UserEntity;
@@ -43,6 +44,14 @@ public final class TestDataUtil {
                 .isbn("1234")
                 .title("Book 1")
                 .quantity(1)
+                .build();
+    }
+
+    public static BookDto createTestBookDtoA() {
+        return BookDto.builder()
+                .isbn("1234")
+                .title("Book 1")
+                .quantity(1L)
                 .build();
     }
 
